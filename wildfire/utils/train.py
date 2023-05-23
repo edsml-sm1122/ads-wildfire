@@ -88,6 +88,7 @@ def train(model, train_data, val_data, epochs=10, device='cpu', patience=3):
     m_type = 0
     if model.__class__.__name__ == 'ConvLSTM':
         m_type = 1
+        model.double()
     opt = torch.optim.Adam(model.parameters())
     loss_fn = nn.MSELoss()
     liveloss = PlotLosses()    
@@ -101,11 +102,11 @@ def train(model, train_data, val_data, epochs=10, device='cpu', patience=3):
         model.train()
         print('Train:')
         for batch, label in tqdm(train_data):
-            batch = batch.reshape(batch.shape[0], 1, batch.shape[1], batch.shape[2]).to(device) # noqa
             opt.zero_grad()
             if m_type == 1:
-                x_hat = model(batch)
+                _, x_hat = model(batch)
             else:
+                batch = batch.reshape(batch.shape[0], 1, batch.shape[1], batch.shape[2]).to(device) # noqa
                 x_hat, _ = model(batch)
             loss = loss_fn(x_hat.squeeze(), label)
             loss.backward()
@@ -117,10 +118,10 @@ def train(model, train_data, val_data, epochs=10, device='cpu', patience=3):
         print('Val:')
         with torch.no_grad():
             for batch, label in tqdm(val_data):
-                batch = batch.reshape(batch.shape[0], 1, batch.shape[1], batch.shape[2]).to(device)  # noqa
                 if m_type == 1:
-                    x_hat = model(batch)
+                    _, x_hat = model(batch)
                 else:
+                    batch = batch.reshape(batch.shape[0], 1, batch.shape[1], batch.shape[2]).to(device) # noqa
                     x_hat, _ = model(batch)
                 loss = loss_fn(x_hat.squeeze(), label)
                 val_loss += loss.item()
