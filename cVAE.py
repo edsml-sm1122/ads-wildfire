@@ -161,6 +161,8 @@ class VAE_Conv(nn.Module):
         - z: [float] the sampled latent vector
         - kl_div: [float] the KL divergence term for regularization
         """       
+        epsilon = 1e-8  # Small epsilon value to avoid zero or negative sigma
+        sigma = torch.clamp(sigma, epsilon)  # Ensure sigma is not zero or negative
         z = mu + sigma * self.distribution.sample(mu.shape).to(self.device)  # Sample the latent distribution
         kl_div = (sigma**2 + mu**2 - torch.log(sigma) - 1/2).sum()  # A term, which is required for regularisation
         return z, kl_div
