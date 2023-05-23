@@ -1,7 +1,7 @@
 import sys
 import torch
 import pytest
-from ..wildfire.cVAE import VAE_Encoder_Conv, VAE_Decoder_Conv, VAE_Conv
+from wildfire.cVAE import VAE_Encoder_Conv, VAE_Decoder_Conv, VAE_Conv
 
 print(sys.path)
 sys.path.append("wildfire/")
