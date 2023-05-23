@@ -1,6 +1,6 @@
 import torch
 import pytest
-from ..cVAE import VAE_Encoder_Conv, VAE_Decoder_Conv, VAE_Conv
+from ..wildfire.cVAE import VAE_Encoder_Conv, VAE_Decoder_Conv, VAE_Conv
 
 @pytest.fixture
 def vae_encoder_conv():
