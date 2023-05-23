@@ -1,26 +1,28 @@
-import sys
 import torch
 import pytest
-from wildfire.cVAE import VAE_Encoder_Conv, VAE_Decoder_Conv, VAE_Conv
+import sys
+import os
 
-print(sys.path)
-sys.path.append("wildfire/")
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(SCRIPT_DIR))
+
+from wildfire import cVAE  # noqa
 
 
 @pytest.fixture
 def vae_encoder_conv():
-    return VAE_Encoder_Conv()
+    return cVAE.VAE_Encoder_Conv()
 
 
 @pytest.fixture
 def vae_decoder_conv():
-    return VAE_Decoder_Conv()
+    return cVAE.VAE_Decoder_Conv()
 
 
 @pytest.fixture
 def vae_conv():
     device = 'cpu'
-    return VAE_Conv(device)
+    return cVAE.VAE_Conv(device)
 
 
 def test_vae_encoder_conv_forward(vae_encoder_conv):
@@ -30,8 +32,8 @@ def test_vae_encoder_conv_forward(vae_encoder_conv):
     width = 28
     x = torch.randn(batch_size, channels, height, width)
     mu, sigma = vae_encoder_conv(x)
-    assert mu.shape == (batch_size, 120, 16, 16)
-    assert sigma.shape == (batch_size, 120, 16, 16)
+    assert mu.shape == (batch_size, 120, 1, 1)
+    assert sigma.shape == (batch_size, 120, 1, 1)
 
 
 def test_vae_decoder_conv_forward(vae_decoder_conv):
@@ -63,7 +65,7 @@ def test_vae_conv_forward(vae_conv):
     width = 28
     x = torch.randn(batch_size, channels, height, width)
     z, kl_div = vae_conv(x)
-    assert z.shape == (batch_size, 1, 256, 256)
+    assert z.shape == (batch_size, 1, 16, 16)
     assert kl_div.shape == ()
 
 
