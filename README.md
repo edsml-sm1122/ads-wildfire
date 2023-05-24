@@ -28,6 +28,13 @@ pip install -r requirements.txt
 pip install -e .
 ```  
 
+User Instructions
+------------
+
+The saved weights for our trained models have been included under `wildfire/models/weights`. These weights are loaded in the respective notebooks.
+
+If wanting to retrain the models from scratch, please delete/remove the saved weights from the above directory. Note: in this case, the `objective_1` and `objective_2` notebooks must be run before the `objective_3` notebook as this requiresthe saved weights.
+ 
 Contributers
 ------------
 
@@ -45,7 +52,7 @@ If you have any usage questions or improvement recommendations, feel free to con
 
 References
 ------------
-* ADD REFERENCES TO MODELS USED
+* Shi, X. et al. (2015) Convolutional LSTM network: A machine learning approach for precipitation nowcasting, arXiv.org. Available at: https://arxiv.org/abs/1506.04214 (Accessed: 24 May 2023). 
 
 LICENSING
 ------------
