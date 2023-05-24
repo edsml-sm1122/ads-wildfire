@@ -102,7 +102,7 @@ def train(model, train_data, val_data, epochs=10, device='cpu', patience=3):
         model.train()
         print('Train:')
         for batch, label in tqdm(train_data):
-            opt.zero_grad()       
+            opt.zero_grad()
             if m_type == 1:
                 _, x_hat = model(batch)
                 x_hat = x_hat.squeeze()
