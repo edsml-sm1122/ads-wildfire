@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Welcome to ads-wildfire’s documentation! &#8212; ads-wildfire 2023 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-ads-wildfire-s-documentation">
+<h1>Welcome to ads-wildfire’s documentation!<a class="headerlink" href="#welcome-to-ads-wildfire-s-documentation" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<span class="target" id="module-wildfire"></span><dl class="py class">
+<dt class="sig sig-object py" id="wildfire.VAE_Conv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wildfire.</span></span><span class="sig-name descname"><span class="pre">VAE_Conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.VAE_Conv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class combining the convolutional encoder and
+the convolutional decoder with a VAE latent space.</p>
+<p>Parameters:
+- device: (str) the device on which to perform the computations</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wildfire.VAE_Conv.device">
+<span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#wildfire.VAE_Conv.device" title="Permalink to this definition">¶</a></dt>
+<dd><p>(str) the device on which to perform the computations</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wildfire.VAE_Conv.encoder">
+<span class="sig-name descname"><span class="pre">encoder</span></span><a class="headerlink" href="#wildfire.VAE_Conv.encoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>(VAE_Encoder_Conv) the VAE encoder network</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wildfire.VAE_Conv.decoder">
+<span class="sig-name descname"><span class="pre">decoder</span></span><a class="headerlink" href="#wildfire.VAE_Conv.decoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>(VAE_Decoder_Conv) the VAE decoder network</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="wildfire.VAE_Conv.distribution">
+<span class="sig-name descname"><span class="pre">distribution</span></span><a class="headerlink" href="#wildfire.VAE_Conv.distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>(torch.distributions.Normal) the distribution used
+for sampling from the latent space</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.VAE_Conv.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.VAE_Conv.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the Convolutional VAE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – (float) a batch of images from the data-loader</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(float) the reconstructed image
+kl_div: (float) the KL divergence term for regularization</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>z</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.VAE_Conv.sample_latent_space">
+<span class="sig-name descname"><span class="pre">sample_latent_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.VAE_Conv.sample_latent_space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample from the latent space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mu</strong> – (float) mean of the learned latent space representation</p></li>
+<li><p><strong>sigma</strong> – (float) standard deviation of the learned latent space
+representation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(float) the sampled latent vector
+kl_div: (float) the KL divergence term for regularization</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>z</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wildfire.VAE_Decoder_Conv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wildfire.</span></span><span class="sig-name descname"><span class="pre">VAE_Decoder_Conv</span></span><a class="headerlink" href="#wildfire.VAE_Decoder_Conv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class containing the convolutional decoder (latent -&gt; image).</p>
+<dl class="simple">
+<dt>Layers:</dt><dd><dl class="simple">
+<dt>layer1: ConvTranspose2d layer with 120 input channels, 60 output</dt><dd><p>channels, kernel size 4, stride 2, and padding 1, followed
+by GELU activation</p>
+</dd>
+<dt>layer2: ConvTranspose2d layer with 60 input channels, 40 output</dt><dd><p>channels, kernel size 4, stride 2, and padding 1,followed
+by GELU activation</p>
+</dd>
+<dt>layer3: ConvTranspose2d layer with 40 input channels, 20 output</dt><dd><p>channels, kernel size 4, stride 2, and padding 1, followed
+by GELU activation</p>
+</dd>
+<dt>layer4: ConvTranspose2d layer with 20 input channels, 10 output</dt><dd><p>channels, kernel size 4, stride 2, and padding 1, followed
+by GELU activation</p>
+</dd>
+<dt>layer5: ConvTranspose2d layer with 10 input channels, 1 output</dt><dd><p>channel, kernel size 5, stride 1, and padding 2, followed
+by Tanh activation</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.VAE_Decoder_Conv.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.VAE_Decoder_Conv.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the decoder.</p>
+<p>Parameters:
+- x: (float) the latent space representation</p>
+<p>Returns:
+- x: (float) the reconstructed image</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wildfire.VAE_Encoder_Conv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wildfire.</span></span><span class="sig-name descname"><span class="pre">VAE_Encoder_Conv</span></span><a class="headerlink" href="#wildfire.VAE_Encoder_Conv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class containing the convolutional encoder (image -&gt; latent).</p>
+<dl class="simple">
+<dt>Layers:</dt><dd><dl class="simple">
+<dt>layer1: Conv2d layer with 1 input channel, 20 output channels,</dt><dd><p>kernel size 5, and padding 2, followed by GELU activation
+and MaxPool2d layer with stride 2</p>
+</dd>
+<dt>layer2: Conv2d layer with 20 input channels, 40 output channels,</dt><dd><p>kernel size 5, and padding 2,followed by GELU activation
+and MaxPool2d layer with stride 2</p>
+</dd>
+<dt>layer3: Conv2d layer with 40 input channels, 60 output channels,</dt><dd><p>kernel size 3, and padding 1,followed by GELU activation
+and MaxPool2d layer with stride 2</p>
+</dd>
+<dt>layerMu: Conv2d layer with 60 input channels, 120 output channels,</dt><dd><p>kernel size 3, and padding 1, followed by GELU activation
+and MaxPool2d layer with stride 2</p>
+</dd>
+<dt>layerSigma: Conv2d layer with 60 input channels, 120 output</dt><dd><p>channels, kernel size 3, and padding 1, followed by
+GELU activation and MaxPool2d layer with stride 2</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.VAE_Encoder_Conv.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.VAE_Encoder_Conv.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the encoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – (float) the image</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(float) mean of the learned latent space representation
+sigma: (float) stdev of the learned latent space representation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mu</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">ads-wildfire</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Team Creek.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
