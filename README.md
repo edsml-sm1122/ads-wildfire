@@ -6,7 +6,7 @@ CONTENTS
 <!-- TOC -->
  * [Introduction](#introduction)
  * [Installation](#installation)
- * [User Instructions](#userinstructions)
+ * [User Instructions](#user-instructions)
  * [Contributers](#contributers)
  * [References](#references)
  * [Licensing](#licensing)
