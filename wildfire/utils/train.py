@@ -67,7 +67,7 @@ def create_dataloader(path, batch_size, mode='train'):
     return data_loader
 
 
-def train(model, train_data, val_data, epochs=10, device='cpu', patience=3):
+def train(model, train_data, val_data, epochs=10, patience=3, device='cpu'):
     """
     Trains a model
 
@@ -91,7 +91,7 @@ def train(model, train_data, val_data, epochs=10, device='cpu', patience=3):
         model.double()
     opt = torch.optim.Adam(model.parameters())
     loss_fn = nn.MSELoss()
-    liveloss = PlotLosses()    
+    liveloss = PlotLosses()
     best_val_loss = float('inf')
     counter = 0
     for epoch in range(epochs):
