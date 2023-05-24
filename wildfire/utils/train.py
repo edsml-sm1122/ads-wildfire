@@ -30,7 +30,7 @@ def create_pairs(data, chunk_size):
     """
     Create input-output pairs from split data.
 
-    Parameters:
+    Args:
         data (numpy.ndarray): The input data.
         chunk_size (int): The size of each input-output pair.
 
@@ -51,7 +51,7 @@ def create_dataloader(path, batch_size, mode='train'):
     """
     Create a DataLoader from split data.
 
-    Parameters:
+    Args:
         path (str): The path to the data file.
         mode (str, optional): The mode of the dataloader. Defaults to 'train'.
 
@@ -71,12 +71,13 @@ def train(model, train_data, val_data, epochs=10, patience=3, device='cpu'):
     """
     Trains a model
 
-    Parameters:
+    Args:
         model (torch.nn.Module): The model to train.
         train_data (torch.utils.data.DataLoader): The DataLoader for training.
         val_data (torch.utils.data.DataLoader): The DataLoader for validation.
         epochs (int, optional): The number of epochs to train. Defaults to 10.
-        device (str, optional): The device to use for training ('cpu' here).
+        device (str, optional): The device to use for training
+                                (defaults to 'cpu').
         patience (int, optional): The number of epochs to wait for improvement
                                   in validation loss before early stopping.
                                   Defaults to 3.

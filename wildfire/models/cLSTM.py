@@ -3,21 +3,18 @@ import torch.nn as nn
 
 
 class ConvLSTMCell(nn.Module):
-
+    """
+    Convolutional LSTM cell module.
+    """
     def __init__(self, input_dim, hidden_dim, kernel_size, bias):
         """
-        Initialize ConvLSTM cell.
+        Initialize the ConvLSTM cell module.
 
-        Parameters
-        ----------
-        input_dim: int
-            Number of channels of input tensor.
-        hidden_dim: int
-            Number of channels of hidden state.
-        kernel_size: (int, int)
-            Size of the convolutional kernel.
-        bias: bool
-            Whether or not to add the bias.
+        Args:
+            input_dim (int): Number of channels of input tensor.
+            hidden_dim (int): Number of channels of hidden state.
+            kernel_size (int, int): Size of the convolutional kernel.
+            bias (bool): Whether or not to add the bias.
         """
 
         super(ConvLSTMCell, self).__init__()
@@ -36,6 +33,18 @@ class ConvLSTMCell(nn.Module):
                               bias=self.bias)
 
     def forward(self, input_tensor, cur_state):
+        """
+        Perform a forward pass of the ConvLSTM cell.
+
+        Args:
+            input_tensor (torch.Tensor): Input tensor of shape
+                                         (batch_size, channels, height, width).
+            cur_state (tuple): Tuple containing the current hidden state
+                               and cell state.
+
+        Returns:
+            tuple: Tuple containing the next hidden state and cell state.
+        """
         h_cur, c_cur = cur_state
 
         combined = torch.cat([input_tensor, h_cur], dim=1)
@@ -53,44 +62,41 @@ class ConvLSTMCell(nn.Module):
         return h_next, c_next
 
     def init_hidden(self, batch_size, image_size):
+        """
+        Initialize the hidden state and cell state.
+
+        Args:
+            batch_size (int): Size of the batch.
+            image_size (tuple): Size of the input image (height, width).
+
+        Returns:
+            tuple: Tuple containing the initialized hidden state 
+                   and cell state.
+        """
         height, width = image_size
         return (torch.zeros(batch_size, self.hidden_dim, height, width, device=self.conv.weight.device),  # noqa
                 torch.zeros(batch_size, self.hidden_dim, height, width, device=self.conv.weight.device))  # noqa
 
 
 class ConvLSTM(nn.Module):
-
     """
-
-    Parameters:
-        input_dim: Number of channels in input
-        hidden_dim: Number of hidden channels
-        kernel_size: Size of kernel in convolutions
-        num_layers: Number of LSTM layers stacked on each other
-        batch_first: Whether or not dimension 0 is the batch or not
-        bias: Bias or no bias in Convolution
-        return_all_layers: Return the list of computations for all layers
-        Note: Will do same padding.
-
-    Input:
-        A tensor of size B, T, C, H, W or T, B, C, H, W
-    Output:
-        A tuple of two lists of length num_layers
-        (or length 1 if return_all_layers is False).
-            0 - layer_output_list is the list of lists
-                of length T of each output
-            1 - last_state_list is the list of last states
-                    each element of the list is a tuple (h, c)
-                    for hidden state and memory
-    Example:
-        >> x = torch.rand((32, 10, 64, 128, 128))
-        >> convlstm = ConvLSTM(64, 16, 3, 1, True, True, False)
-        >> _, last_states = convlstm(x)
-        >> h = last_states[0][0]  # 0 for layer index, 0 for h index
+    Convolutional LSTM module.
     """
-
     def __init__(self, input_dim, hidden_dim, kernel_size, num_layers,
                  batch_first=False, bias=True, return_all_layers=False):
+        """
+        Initialize the ConvLSTM module.
+
+        Args:
+            input_dim (int): Number of channels in the input.
+            hidden_dim (list or int): Number of hidden channels.
+            kernel_size (list or tuple): Size of the kernel in convolutions.
+            num_layers (int): Number of LSTM layers stacked on each other.
+            batch_first (bool): Whether or not dimension 0 is the b dimension.
+            bias (bool): Bias or no bias in convolution.
+            return_all_layers (bool): Return the list of computations
+                                      for all layers.
+        """
         super(ConvLSTM, self).__init__()
 
         self._check_kernel_size_consistency(kernel_size)
@@ -123,17 +129,19 @@ class ConvLSTM(nn.Module):
 
     def forward(self, input_tensor, hidden_state=None):
         """
+        Perform a forward pass of the ConvLSTM module.
 
-        Parameters
-        ----------
-        input_tensor: todo
-            5-D Tensor either of shape (t, b, c, h, w) or (b, t, c, h, w)
-        hidden_state: todo
-            None. todo implement stateful
-
-        Returns
-        -------
-        last_state_list, layer_output
+        Args:
+            input_tensor (torch.Tensor): Input tensor of shape:
+                                         (b, t, c, h, w) or (t, b, c, h, w).
+            hidden_state (list or None): List of initial hidden and cell states
+                                         for each layer.
+        Returns:
+            tuple: Tuple containing two lists of length num_layers
+                   (or length 1 if return_all_layers is False):
+                1. layer_output_list: List of output tensors for each layer.
+                2. last_state_list: List of last hidden states and cell states
+                                    for each layer.
         """
         if not self.batch_first:
             # (t, b, c, h, w) -> (b, t, c, h, w)
@@ -177,6 +185,17 @@ class ConvLSTM(nn.Module):
         return h_las, res
 
     def _init_hidden(self, batch_size, image_size):
+        """
+        Initialize the hidden states and cell states.
+
+        Args:
+            batch_size (int): Size of the batch.
+            image_size (tuple): Size of the input image (height, width).
+
+        Returns:
+            list: List of tuples, each containing the initialized hidden state
+                  and cell state for a layer.
+        """
         init_states = []
         for i in range(self.num_layers):
             init_states.append(
@@ -185,6 +204,15 @@ class ConvLSTM(nn.Module):
 
     @staticmethod
     def _check_kernel_size_consistency(kernel_size):
+        """
+        Check if the kernel size is consistent.
+
+        Args:
+            kernel_size (tuple or list): Kernel size to check.
+
+        Raises:
+            ValueError: If the kernel size is not a tuple or a list of tuples.
+        """
         if not (isinstance(kernel_size, tuple) or
                 (isinstance(kernel_size, list) and
                  all([isinstance(elem, tuple) for elem in kernel_size]))):
@@ -192,6 +220,16 @@ class ConvLSTM(nn.Module):
 
     @staticmethod
     def _extend_for_multilayer(param, num_layers):
+        """
+        Extend the parameter for multiple layers.
+
+        Args:
+            param (int or list): Parameter to extend.
+            num_layers (int): Number of layers.
+
+        Returns:
+            list: Extended parameter list.
+        """
         if not isinstance(param, list):
             param = [param] * num_layers
         return param

@@ -3,26 +3,12 @@ import torch.nn as nn
 
 
 class VAE_Encoder_Conv(nn.Module):
+    """
+    Convolutional encoder module.
+    """
     def __init__(self):
         """
-        Class containing the convolutional encoder (image -> latent).
-
-        Layers:
-            layer1: Conv2d layer with 1 input channel, 20 output channels,
-                    kernel size 5, and padding 2, followed by GELU activation
-                    and MaxPool2d layer with stride 2
-            layer2: Conv2d layer with 20 input channels, 40 output channels,
-                    kernel size 5, and padding 2,followed by GELU activation
-                    and MaxPool2d layer with stride 2
-            layer3: Conv2d layer with 40 input channels, 60 output channels,
-                    kernel size 3, and padding 1,followed by GELU activation
-                    and MaxPool2d layer with stride 2
-            layerMu: Conv2d layer with 60 input channels, 120 output channels,
-                    kernel size 3, and padding 1, followed by GELU activation
-                    and MaxPool2d layer with stride 2
-            layerSigma: Conv2d layer with 60 input channels, 120 output
-                        channels, kernel size 3, and padding 1, followed by
-                        GELU activation and MaxPool2d layer with stride 2
+        Initialise the convolutional encoder module (latent -> image).
         """
         super(VAE_Encoder_Conv, self).__init__()
 
@@ -60,12 +46,12 @@ class VAE_Encoder_Conv(nn.Module):
         """
         Forward pass of the encoder.
 
-        Parameters:
-            x: (float) the image
+        Args:
+            x (float): the image
 
         Returns:
-            mu: (float) mean of the learned latent space representation
-            sigma: (float) stdev of the learned latent space representation
+            mu (float): mean of the learned latent space representation
+            sigma (float): stdev of the learned latent space representation
         """
         x = self.layer1(x)
         x = self.layer2(x)
@@ -76,26 +62,12 @@ class VAE_Encoder_Conv(nn.Module):
 
 
 class VAE_Decoder_Conv(nn.Module):
+    """
+    Convolutional decoder module.
+    """
     def __init__(self):
         """
-        Class containing the convolutional decoder (latent -> image).
-
-        Layers:
-            layer1: ConvTranspose2d layer with 120 input channels, 60 output
-                    channels, kernel size 4, stride 2, and padding 1, followed
-                    by GELU activation
-            layer2: ConvTranspose2d layer with 60 input channels, 40 output
-                    channels, kernel size 4, stride 2, and padding 1,followed
-                    by GELU activation
-            layer3: ConvTranspose2d layer with 40 input channels, 20 output
-                    channels, kernel size 4, stride 2, and padding 1, followed
-                    by GELU activation
-            layer4: ConvTranspose2d layer with 20 input channels, 10 output
-                    channels, kernel size 4, stride 2, and padding 1, followed
-                    by GELU activation
-            layer5: ConvTranspose2d layer with 10 input channels, 1 output
-                    channel, kernel size 5, stride 1, and padding 2, followed
-                    by Tanh activation
+        Initialise the convolutional decoder module (latent -> image).
         """
         super(VAE_Decoder_Conv, self).__init__()
 
@@ -113,7 +85,7 @@ class VAE_Decoder_Conv(nn.Module):
             nn.ConvTranspose2d(40, 20, 4, stride=2, padding=1),
             nn.GELU()
         )  # Dims in 64x64 -> out 128x128
-        
+
         self.layer4 = nn.Sequential(
             nn.ConvTranspose2d(20, 10, 4, stride=2, padding=1),
             nn.GELU()
@@ -128,11 +100,11 @@ class VAE_Decoder_Conv(nn.Module):
         """
         Forward pass of the decoder.
 
-        Parameters:
-        - x: (float) the latent space representation
+        Args:
+            x: (float) the latent space representation
 
         Returns:
-        - x: (float) the reconstructed image
+            x: (float) the reconstructed image
         """
         x = self.layer1(x)
         x = self.layer2(x)
@@ -143,20 +115,17 @@ class VAE_Decoder_Conv(nn.Module):
 
 
 class VAE_Conv(nn.Module):
+    """
+    Convolutional VAE module.
+    """
     def __init__(self, device):
         """
-        Class combining the convolutional encoder and
-        the convolutional decoder with a VAE latent space.
+        Initilise the convolutional VAE module combining the
+        convolutional encoder and the convolutional decoder
+        with a VAE latent space.
 
-        Parameters:
-        - device: (str) the device on which to perform the computations
-
-        Attributes:
-            device: (str) the device on which to perform the computations
-            encoder: (VAE_Encoder_Conv) the VAE encoder network
-            decoder: (VAE_Decoder_Conv) the VAE decoder network
-            distribution: (torch.distributions.Normal) the distribution used
-                          for sampling from the latent space
+        Args:
+            device (str) : the device on which to perform the computations.
         """
         super(VAE_Conv, self).__init__()
         self.device = device
@@ -168,14 +137,13 @@ class VAE_Conv(nn.Module):
         """
         Sample from the latent space.
 
-        Parameters:
-            mu: (float) mean of the learned latent space representation
-            sigma: (float) standard deviation of the learned latent space
-                   representation
+        Args:
+            mu (float): mean of the learned latent space.
+            sigma (float):  standard deviation of the learned latent space.
 
         Returns:
-            z: (float) the sampled latent vector
-            kl_div: (float) the KL divergence term for regularization
+            z (float): the sampled latent vector
+            kl_div (float): the KL divergence term for regularization
         """
         epsilon = 1e-8
         sigma = torch.clamp(sigma, epsilon)  # Ensure sigma > 0
@@ -187,12 +155,12 @@ class VAE_Conv(nn.Module):
         """
         Forward pass of the Convolutional VAE.
 
-        Parameters:
-            x: (float) a batch of images from the data-loader
+        Args:
+            x (float): a batch of images from the data-loader
 
         Returns:
-            z: (float) the reconstructed image
-            kl_div: (float) the KL divergence term for regularization
+            z (float): the reconstructed image
+            kl_div (float): the KL divergence term for regularization
         """
         mu, sigma = self.encoder(x)
         z, kl_div = self.sample_latent_space(mu, sigma)
