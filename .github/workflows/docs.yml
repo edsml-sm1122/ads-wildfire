@@ -26,7 +26,7 @@ jobs:
 
     - name: Build sphinx documentation
       run: |
-	sphinx-build -b html docs docs/html
+        sphinx-build -b html docs docs/html
 
     - name: Check if there are any changes in docs/html
       id: verify_diff
