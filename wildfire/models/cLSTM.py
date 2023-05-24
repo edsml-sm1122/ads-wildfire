@@ -180,7 +180,7 @@ class ConvLSTM(nn.Module):
         init_states = []
         for i in range(self.num_layers):
             init_states.append(
-                self.cell_list[i].init_hidden(batch_size, image_size))  
+                self.cell_list[i].init_hidden(batch_size, image_size))
         return init_states
 
     @staticmethod
