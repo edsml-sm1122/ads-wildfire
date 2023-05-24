@@ -102,11 +102,12 @@ def train(model, train_data, val_data, epochs=10, device='cpu', patience=3):
         model.train()
         print('Train:')
         for batch, label in tqdm(train_data):
-            opt.zero_grad()
+            opt.zero_grad()       
             if m_type == 1:
                 _, x_hat = model(batch)
+                x_hat = x_hat.squeeze()
             else:
-                batch = batch.reshape(batch.shape[0], 1, batch.shape[1], batch.shape[2]).to(device) # noqa
+                batch = batch.reshape(batch.shape[0], 1, batch.shape[1], batch.shape[2]).to(device) # noqa 
                 x_hat, _ = model(batch)
             loss = loss_fn(x_hat.squeeze(), label)
             loss.backward()
@@ -120,8 +121,9 @@ def train(model, train_data, val_data, epochs=10, device='cpu', patience=3):
             for batch, label in tqdm(val_data):
                 if m_type == 1:
                     _, x_hat = model(batch)
+                    x_hat = x_hat.squeeze()
                 else:
-                    batch = batch.reshape(batch.shape[0], 1, batch.shape[1], batch.shape[2]).to(device) # noqa
+                    batch = batch.reshape(batch.shape[0], 1, batch.shape[1], batch.shape[2]).to(device) # noqa 
                     x_hat, _ = model(batch)
                 loss = loss_fn(x_hat.squeeze(), label)
                 val_loss += loss.item()
