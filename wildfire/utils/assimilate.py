@@ -21,8 +21,8 @@ def KalmanGain(B, H, R):
 
 
 def run_assimilation(preds_compr, obs_data_compr):
-    R = np.cov(obs_data_compr)
-    H = np.identity(obs_data_compr.shape[0])
+    R = np.cov(obs_data_compr.T)
+    H = np.identity(obs_data_compr.shape[1])
     B = np.cov(preds_compr.T)
 
     K = KalmanGain(B, H, R)
