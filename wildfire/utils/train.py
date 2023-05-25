@@ -10,12 +10,17 @@ def split(arr, chunk_size):
     """
     Split an array into multiple subarrays of equal size.
 
-    Args:
-        arr (numpy.ndarray): The input array.
-        chunk_size (int): The size of each subarray.
+    Parameters
+    ----------
+    arr: numpy.ndarray
+        The input array.
+    chunk_size: int
+        The size of each subarray.
 
-    Returns:
-        list: List of subarrays.
+    Returns
+    -------
+    list
+        List of subarrays.
     """
     L = len(arr)
     num_splits = L // chunk_size
@@ -30,13 +35,17 @@ def create_pairs(data, chunk_size):
     """
     Create input-output pairs from split data.
 
-    Args:
-        data (numpy.ndarray): The input data.
-        chunk_size (int): The size of each input-output pair.
+    Parameters
+    ----------
+    data: numpy.ndarray
+        The input data.
+    chunk_size: int
+        The size of each input-output pair.
 
-    Returns:
-        tuple: A tuple containing two arrays, input (x) and output (y).
-
+    Returns
+    -------
+    tuple
+        A tuple containing two arrays, input (x) and output (y).
     """
     x = split(data, chunk_size)
     y = split(data, chunk_size)
@@ -51,13 +60,17 @@ def create_dataloader(path, batch_size, mode='train'):
     """
     Create a DataLoader from split data.
 
-    Args:
-        path (str): The path to the data file.
-        mode (str, optional): The mode of the dataloader. Defaults to 'train'.
+    Parameters
+    ----------
+    path: str
+        The path to the data file.
+    mode: str, optional
+        The mode of the dataloader. Defaults to 'train'.
 
-    Returns:
-        torch.utils.data.DataLoader: The created DataLoader.
-
+    Returns
+    -------
+    torch.utils.data.DataLoader
+        The created DataLoader.
     """
     data = np.array(np.load(open(path, 'rb')))
     data_x, data_y = create_pairs(data, 100)
@@ -71,19 +84,26 @@ def train(model, train_data, val_data, epochs=10, patience=3, device='cpu'):
     """
     Trains a model
 
-    Args:
-        model (torch.nn.Module): The model to train.
-        train_data (torch.utils.data.DataLoader): The DataLoader for training.
-        val_data (torch.utils.data.DataLoader): The DataLoader for validation.
-        epochs (int, optional): The number of epochs to train. Defaults to 10.
-        device (str, optional): The device to use for training
-                                (defaults to 'cpu').
-        patience (int, optional): The number of epochs to wait for improvement
-                                  in validation loss before early stopping.
-                                  Defaults to 3.
+    Parameters
+    ----------
+    model: torch.nn.Module
+        The model to train.
+    train_data: torch.utils.data.DataLoader
+        The DataLoader for training.
+    val_data: torch.utils.data.DataLoader
+        The DataLoader for validation.
+    epochs: int, optional
+        The number of epochs to train. Defaults to 10.
+    device: str, optional
+        The device to use for training (defaults to 'cpu').
+    patience: int, optional
+        The number of epochs to wait for improvement in validation loss
+        before early stopping. Defaults to 3.
 
-    Returns:
-        torch.nn.Module: The trained autoencoder model.
+    Returns
+    -------
+    torch.nn.Module
+        The trained autoencoder model.
 
     """
     m_type = 0

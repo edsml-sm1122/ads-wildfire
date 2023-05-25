@@ -5,4 +5,4 @@ tqdm
 livelossplot
 ipython
 sphinx
-sphinx_automodapi
+sphinx_rtd_theme

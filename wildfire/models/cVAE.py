@@ -46,12 +46,17 @@ class VAE_Encoder_Conv(nn.Module):
         """
         Forward pass of the encoder.
 
-        Args:
-            x (float): the image
+        Parameters
+        ----------
+        x: float
+            the image
 
-        Returns:
-            mu (float): mean of the learned latent space representation
-            sigma (float): stdev of the learned latent space representation
+        Returns
+        -------
+        mu: float
+            mean of the learned latent space representation
+        sigma: float
+            stdev of the learned latent space representation
         """
         x = self.layer1(x)
         x = self.layer2(x)
@@ -100,11 +105,15 @@ class VAE_Decoder_Conv(nn.Module):
         """
         Forward pass of the decoder.
 
-        Args:
-            x: (float) the latent space representation
+        Parameters
+        ----------
+        x: float
+            the latent space representation
 
-        Returns:
-            x: (float) the reconstructed image
+        Returns
+        -------
+        x: float
+            the reconstructed image
         """
         x = self.layer1(x)
         x = self.layer2(x)
@@ -124,8 +133,10 @@ class VAE_Conv(nn.Module):
         convolutional encoder and the convolutional decoder
         with a VAE latent space.
 
-        Args:
-            device (str) : the device on which to perform the computations.
+        Parameters
+        ----------
+        device: str
+            the device on which to perform the computations.
         """
         super(VAE_Conv, self).__init__()
         self.device = device
@@ -137,13 +148,19 @@ class VAE_Conv(nn.Module):
         """
         Sample from the latent space.
 
-        Args:
-            mu (float): mean of the learned latent space.
-            sigma (float):  standard deviation of the learned latent space.
+        Parameters
+        ----------
+        mu: float
+            mean of the learned latent space.
+        sigma: float
+            standard deviation of the learned latent space.
 
-        Returns:
-            z (float): the sampled latent vector
-            kl_div (float): the KL divergence term for regularization
+        Returns
+        -------
+        z: float
+            the sampled latent vector
+        kl_div: float
+            the KL divergence term for regularization
         """
         epsilon = 1e-8
         sigma = torch.clamp(sigma, epsilon)  # Ensure sigma > 0
@@ -155,12 +172,17 @@ class VAE_Conv(nn.Module):
         """
         Forward pass of the Convolutional VAE.
 
-        Args:
-            x (float): a batch of images from the data-loader
+        Parameters
+        ----------
+        x: float
+            a batch of images from the data-loader
 
-        Returns:
-            z (float): the reconstructed image
-            kl_div (float): the KL divergence term for regularization
+        Returns
+        -------
+        z: float
+            the reconstructed image
+        kl_div: float
+            the KL divergence term for regularization
         """
         mu, sigma = self.encoder(x)
         z, kl_div = self.sample_latent_space(mu, sigma)

@@ -1,203 +1,490 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-
-<!doctype html>
-
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Welcome to ads-wildfire’s documentation! &#8212; ads-wildfire 2023 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
-    
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/bizstyle.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to ads-wildfire’s documentation! &mdash; ads-wildfire 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="KalmanGain" href="api/wildfire.KalmanGain.html" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <!--[if lt IE 9]>
-    <script src="_static/css3-mediaqueries.js"></script>
-    <![endif]-->
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="api/wildfire.KalmanGain.html" title="KalmanGain"
-             accesskey="N">next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">ads-wildfire 2023 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Welcome to ads-wildfire’s documentation!</a></li> 
-      </ul>
-    </div>  
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <section id="welcome-to-ads-wildfire-s-documentation">
-<h1>Welcome to ads-wildfire’s documentation!<a class="headerlink" href="#welcome-to-ads-wildfire-s-documentation" title="Permalink to this heading">¶</a></h1>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            ads-wildfire
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to ads-wildfire’s documentation!</a><ul>
+<li><a class="reference internal" href="#wildfire.models.cLSTM.ConvLSTM"><code class="docutils literal notranslate"><span class="pre">ConvLSTM</span></code></a><ul>
+<li><a class="reference internal" href="#wildfire.models.cLSTM.ConvLSTM.forward"><code class="docutils literal notranslate"><span class="pre">ConvLSTM.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wildfire.models.cLSTM.ConvLSTMCell"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell</span></code></a><ul>
+<li><a class="reference internal" href="#wildfire.models.cLSTM.ConvLSTMCell.forward"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.forward()</span></code></a></li>
+<li><a class="reference internal" href="#wildfire.models.cLSTM.ConvLSTMCell.init_hidden"><code class="docutils literal notranslate"><span class="pre">ConvLSTMCell.init_hidden()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wildfire.models.cVAE.VAE_Conv"><code class="docutils literal notranslate"><span class="pre">VAE_Conv</span></code></a><ul>
+<li><a class="reference internal" href="#wildfire.models.cVAE.VAE_Conv.forward"><code class="docutils literal notranslate"><span class="pre">VAE_Conv.forward()</span></code></a></li>
+<li><a class="reference internal" href="#wildfire.models.cVAE.VAE_Conv.sample_latent_space"><code class="docutils literal notranslate"><span class="pre">VAE_Conv.sample_latent_space()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wildfire.models.cVAE.VAE_Decoder_Conv"><code class="docutils literal notranslate"><span class="pre">VAE_Decoder_Conv</span></code></a><ul>
+<li><a class="reference internal" href="#wildfire.models.cVAE.VAE_Decoder_Conv.forward"><code class="docutils literal notranslate"><span class="pre">VAE_Decoder_Conv.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wildfire.models.cVAE.VAE_Encoder_Conv"><code class="docutils literal notranslate"><span class="pre">VAE_Encoder_Conv</span></code></a><ul>
+<li><a class="reference internal" href="#wildfire.models.cVAE.VAE_Encoder_Conv.forward"><code class="docutils literal notranslate"><span class="pre">VAE_Encoder_Conv.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wildfire.utils.train.create_dataloader"><code class="docutils literal notranslate"><span class="pre">create_dataloader()</span></code></a></li>
+<li><a class="reference internal" href="#wildfire.utils.train.create_pairs"><code class="docutils literal notranslate"><span class="pre">create_pairs()</span></code></a></li>
+<li><a class="reference internal" href="#wildfire.utils.train.split"><code class="docutils literal notranslate"><span class="pre">split()</span></code></a></li>
+<li><a class="reference internal" href="#wildfire.utils.train.train"><code class="docutils literal notranslate"><span class="pre">train()</span></code></a></li>
+<li><a class="reference internal" href="#wildfire.utils.assimilate.KalmanGain"><code class="docutils literal notranslate"><span class="pre">KalmanGain()</span></code></a></li>
+<li><a class="reference internal" href="#wildfire.utils.assimilate.covariance_matrix"><code class="docutils literal notranslate"><span class="pre">covariance_matrix()</span></code></a></li>
+<li><a class="reference internal" href="#wildfire.utils.assimilate.run_assimilation"><code class="docutils literal notranslate"><span class="pre">run_assimilation()</span></code></a></li>
+<li><a class="reference internal" href="#wildfire.utils.assimilate.update_prediction"><code class="docutils literal notranslate"><span class="pre">update_prediction()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">ads-wildfire</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to ads-wildfire’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-wildfire.models.cLSTM">
+<span id="welcome-to-ads-wildfire-s-documentation"></span><h1>Welcome to ads-wildfire’s documentation!<a class="headerlink" href="#module-wildfire.models.cLSTM" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="wildfire.models.cLSTM.ConvLSTM">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wildfire.models.cLSTM.</span></span><span class="sig-name descname"><span class="pre">ConvLSTM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_all_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cLSTM.ConvLSTM" title="Permalink to this definition"></a></dt>
+<dd><p>Convolutional LSTM module.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.models.cLSTM.ConvLSTM.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cLSTM.ConvLSTM.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Perform a forward pass of the ConvLSTM module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_tensor</strong> (<em>torch.Tensor</em>) – Input tensor of shape: (b, t, c, h, w) or (t, b, c, h, w).</p></li>
+<li><p><strong>hidden_state</strong> (<em>list</em><em> or </em><em>None</em>) – List of initial hidden and cell states for each layer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>Tuple containing two lists of length num_layers
+(or length 1 if return_all_layers is False):</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>layer_output_list: List of output tensors for each layer.</p></li>
+<li><dl class="simple">
+<dt>last_state_list: List of last hidden states and cell states</dt><dd><p>for each layer.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wildfire.models.cLSTM.ConvLSTMCell">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wildfire.models.cLSTM.</span></span><span class="sig-name descname"><span class="pre">ConvLSTMCell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cLSTM.ConvLSTMCell" title="Permalink to this definition"></a></dt>
+<dd><p>Convolutional LSTM cell module.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.models.cLSTM.ConvLSTMCell.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cur_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cLSTM.ConvLSTMCell.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Perform a forward pass of the ConvLSTM cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_tensor</strong> (<em>torch.Tensor</em>) – Input tensor of shape (batch_size, channels, height, width).</p></li>
+<li><p><strong>cur_state</strong> (<em>tuple</em>) – Tuple containing the current hidden state and cell state.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple containing the next hidden state and cell state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.models.cLSTM.ConvLSTMCell.init_hidden">
+<span class="sig-name descname"><span class="pre">init_hidden</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cLSTM.ConvLSTMCell.init_hidden" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize the hidden state and cell state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batch_size</strong> (<em>int</em>) – Size of the batch.</p></li>
+<li><p><strong>image_size</strong> (<em>tuple</em>) – Size of the input image (height, width).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple containing the initialized hidden state and cell state.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-wildfire.models.cVAE"></span><dl class="py class">
+<dt class="sig sig-object py" id="wildfire.models.cVAE.VAE_Conv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wildfire.models.cVAE.</span></span><span class="sig-name descname"><span class="pre">VAE_Conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cVAE.VAE_Conv" title="Permalink to this definition"></a></dt>
+<dd><p>Convolutional VAE module.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.models.cVAE.VAE_Conv.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cVAE.VAE_Conv.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Forward pass of the Convolutional VAE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – a batch of images from the data-loader</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>z</strong> (<em>float</em>) – the reconstructed image</p></li>
+<li><p><strong>kl_div</strong> (<em>float</em>) – the KL divergence term for regularization</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.models.cVAE.VAE_Conv.sample_latent_space">
+<span class="sig-name descname"><span class="pre">sample_latent_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cVAE.VAE_Conv.sample_latent_space" title="Permalink to this definition"></a></dt>
+<dd><p>Sample from the latent space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mu</strong> (<em>float</em>) – mean of the learned latent space.</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – standard deviation of the learned latent space.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>z</strong> (<em>float</em>) – the sampled latent vector</p></li>
+<li><p><strong>kl_div</strong> (<em>float</em>) – the KL divergence term for regularization</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wildfire.models.cVAE.VAE_Decoder_Conv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wildfire.models.cVAE.</span></span><span class="sig-name descname"><span class="pre">VAE_Decoder_Conv</span></span><a class="headerlink" href="#wildfire.models.cVAE.VAE_Decoder_Conv" title="Permalink to this definition"></a></dt>
+<dd><p>Convolutional decoder module.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.models.cVAE.VAE_Decoder_Conv.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cVAE.VAE_Decoder_Conv.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Forward pass of the decoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – the latent space representation</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>x</strong> – the reconstructed image</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="wildfire.models.cVAE.VAE_Encoder_Conv">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">wildfire.models.cVAE.</span></span><span class="sig-name descname"><span class="pre">VAE_Encoder_Conv</span></span><a class="headerlink" href="#wildfire.models.cVAE.VAE_Encoder_Conv" title="Permalink to this definition"></a></dt>
+<dd><p>Convolutional encoder module.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="wildfire.models.cVAE.VAE_Encoder_Conv.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.models.cVAE.VAE_Encoder_Conv.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Forward pass of the encoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – the image</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mu</strong> (<em>float</em>) – mean of the learned latent space representation</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – stdev of the learned latent space representation</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-wildfire.utils.train"></span><dl class="py function">
+<dt class="sig sig-object py" id="wildfire.utils.train.create_dataloader">
+<span class="sig-prename descclassname"><span class="pre">wildfire.utils.train.</span></span><span class="sig-name descname"><span class="pre">create_dataloader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.utils.train.create_dataloader" title="Permalink to this definition"></a></dt>
+<dd><p>Create a DataLoader from split data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The path to the data file.</p></li>
+<li><p><strong>mode</strong> (<em>str</em><em>, </em><em>optional</em>) – The mode of the dataloader. Defaults to ‘train’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created DataLoader.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.utils.data.DataLoader</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wildfire.utils.train.create_pairs">
+<span class="sig-prename descclassname"><span class="pre">wildfire.utils.train.</span></span><span class="sig-name descname"><span class="pre">create_pairs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.utils.train.create_pairs" title="Permalink to this definition"></a></dt>
+<dd><p>Create input-output pairs from split data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – The input data.</p></li>
+<li><p><strong>chunk_size</strong> (<em>int</em>) – The size of each input-output pair.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing two arrays, input (x) and output (y).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wildfire.utils.train.split">
+<span class="sig-prename descclassname"><span class="pre">wildfire.utils.train.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.utils.train.split" title="Permalink to this definition"></a></dt>
+<dd><p>Split an array into multiple subarrays of equal size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>numpy.ndarray</em>) – The input array.</p></li>
+<li><p><strong>chunk_size</strong> (<em>int</em>) – The size of each subarray.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of subarrays.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wildfire.utils.train.train">
+<span class="sig-prename descclassname"><span class="pre">wildfire.utils.train.</span></span><span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.utils.train.train" title="Permalink to this definition"></a></dt>
+<dd><p>Trains a model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>torch.nn.Module</em>) – The model to train.</p></li>
+<li><p><strong>train_data</strong> (<em>torch.utils.data.DataLoader</em>) – The DataLoader for training.</p></li>
+<li><p><strong>val_data</strong> (<em>torch.utils.data.DataLoader</em>) – The DataLoader for validation.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of epochs to train. Defaults to 10.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – The device to use for training (defaults to ‘cpu’).</p></li>
+<li><p><strong>patience</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of epochs to wait for improvement in validation loss
+before early stopping. Defaults to 3.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The trained autoencoder model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.nn.Module</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-wildfire.utils.assimilate"></span><dl class="py function">
+<dt class="sig sig-object py" id="wildfire.utils.assimilate.KalmanGain">
+<span class="sig-prename descclassname"><span class="pre">wildfire.utils.assimilate.</span></span><span class="sig-name descname"><span class="pre">KalmanGain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.utils.assimilate.KalmanGain" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the Kalman gain matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>B</strong> (<em>numpy.ndarray</em>) – Background error covariance matrix with shape (n, n).</p></li>
+<li><p><strong>H</strong> (<em>numpy.ndarray</em>) – Measurement matrix with shape (p, n).</p></li>
+<li><p><strong>R</strong> (<em>numpy.ndarray</em>) – Measurement error covariance matrix with shape (p, p).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Kalman gain matrix with shape (n, p).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wildfire.utils.assimilate.covariance_matrix">
+<span class="sig-prename descclassname"><span class="pre">wildfire.utils.assimilate.</span></span><span class="sig-name descname"><span class="pre">covariance_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.utils.assimilate.covariance_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates the covariance matrix of the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>numpy.ndarray</em>) – Input data matrix with shape (n, m).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Covariance matrix of shape (n, n).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wildfire.utils.assimilate.run_assimilation">
+<span class="sig-prename descclassname"><span class="pre">wildfire.utils.assimilate.</span></span><span class="sig-name descname"><span class="pre">run_assimilation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds_compr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs_data_compr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.utils.assimilate.run_assimilation" title="Permalink to this definition"></a></dt>
+<dd><p>Runs the assimilation process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preds_compr</strong> (<em>numpy.ndarray</em>) – Matrix of predicted values with shape (m, n).</p></li>
+<li><p><strong>obs_data_compr</strong> (<em>numpy.ndarray</em>) – Matrix of observed values with shape (m, p).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of updated state estimates, each with shape (n, 1).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="wildfire.utils.assimilate.update_prediction">
+<span class="sig-prename descclassname"><span class="pre">wildfire.utils.assimilate.</span></span><span class="sig-name descname"><span class="pre">update_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#wildfire.utils.assimilate.update_prediction" title="Permalink to this definition"></a></dt>
+<dd><p>Updates the prediction using the Kalman filter equations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>numpy.ndarray</em>) – Current state estimate with shape (n, 1).</p></li>
+<li><p><strong>K</strong> (<em>numpy.ndarray</em>) – Kalman Gain matrix with shape (n, p).</p></li>
+<li><p><strong>H</strong> (<em>numpy.ndarray</em>) – Measurement matrix with shape (p, n).</p></li>
+<li><p><strong>y</strong> (<em>numpy.ndarray</em>) – Measurement vector with shape (p, 1).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated state estimate with shape (n, 1).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
 <div class="toctree-wrapper compound">
 </div>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-<section id="module-wildfire">
-<span id="wildfire-package"></span><h2>wildfire Package<a class="headerlink" href="#module-wildfire" title="Permalink to this heading">¶</a></h2>
-<section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/wildfire.KalmanGain.html#wildfire.KalmanGain" title="wildfire.KalmanGain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KalmanGain</span></code></a>(B, H, R)</p></td>
-<td><p>Calculates the Kalman gain matrix.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/wildfire.covariance_matrix.html#wildfire.covariance_matrix" title="wildfire.covariance_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">covariance_matrix</span></code></a>(X)</p></td>
-<td><p>Calculates the covariance matrix of the input data.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/wildfire.create_dataloader.html#wildfire.create_dataloader" title="wildfire.create_dataloader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_dataloader</span></code></a>(path, batch_size[, mode])</p></td>
-<td><p>Create a DataLoader from split data.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/wildfire.create_pairs.html#wildfire.create_pairs" title="wildfire.create_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_pairs</span></code></a>(data, chunk_size)</p></td>
-<td><p>Create input-output pairs from split data.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">inv</span></code>(a)</p></td>
-<td><p>Compute the (multiplicative) inverse of a matrix.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/wildfire.run_assimilation.html#wildfire.run_assimilation" title="wildfire.run_assimilation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_assimilation</span></code></a>(preds_compr, obs_data_compr)</p></td>
-<td><p>Runs the assimilation process.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/wildfire.split.html#wildfire.split" title="wildfire.split"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split</span></code></a>(arr, chunk_size)</p></td>
-<td><p>Split an array into multiple subarrays of equal size.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/wildfire.train.html#wildfire.train" title="wildfire.train"><code class="xref py py-obj docutils literal notranslate"><span class="pre">train</span></code></a>(model, train_data, val_data[, epochs, ...])</p></td>
-<td><p>Trains a model</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/wildfire.update_prediction.html#wildfire.update_prediction" title="wildfire.update_prediction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_prediction</span></code></a>(x, K, H, y)</p></td>
-<td><p>Updates the prediction using the Kalman filter equations.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h3>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/wildfire.ConvLSTM.html#wildfire.ConvLSTM" title="wildfire.ConvLSTM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConvLSTM</span></code></a>(input_dim, hidden_dim, kernel_size, ...)</p></td>
-<td><p>Convolutional LSTM module.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/wildfire.ConvLSTMCell.html#wildfire.ConvLSTMCell" title="wildfire.ConvLSTMCell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConvLSTMCell</span></code></a>(input_dim, hidden_dim, ...)</p></td>
-<td><p>Convolutional LSTM cell module.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">DataLoader</span></code>(dataset[, batch_size, shuffle, ...])</p></td>
-<td><p>Data loader.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PlotLosses</span></code>([outputs, mode])</p></td>
-<td><p>Class collect metrics from the training engine and send it to plugins, when send is called</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TensorDataset</span></code>(*tensors)</p></td>
-<td><p>Dataset wrapping tensors.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/wildfire.VAE_Conv.html#wildfire.VAE_Conv" title="wildfire.VAE_Conv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VAE_Conv</span></code></a>(device)</p></td>
-<td><p>Convolutional VAE module.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="api/wildfire.VAE_Decoder_Conv.html#wildfire.VAE_Decoder_Conv" title="wildfire.VAE_Decoder_Conv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VAE_Decoder_Conv</span></code></a>()</p></td>
-<td><p>Convolutional decoder module.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="api/wildfire.VAE_Encoder_Conv.html#wildfire.VAE_Encoder_Conv" title="wildfire.VAE_Encoder_Conv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VAE_Encoder_Conv</span></code></a>()</p></td>
-<td><p>Convolutional encoder module.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">tqdm</span></code>(*_, **__)</p></td>
-<td><p>Decorate an iterable object, returning an iterator which acts exactly like the original iterable, but prints a dynamically updating progressbar every time a value is requested.</p></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
 </section>
 
 
-            <div class="clearer"></div>
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <div>
-    <h3><a href="#">Table of Contents</a></h3>
-    <ul>
-<li><a class="reference internal" href="#">Welcome to ads-wildfire’s documentation!</a></li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a><ul>
-<li><a class="reference internal" href="#module-wildfire">wildfire Package</a><ul>
-<li><a class="reference internal" href="#functions">Functions</a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+          <footer>
 
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Team Creek.</p>
   </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="api/wildfire.KalmanGain.html"
-                          title="next chapter">KalmanGain</a></p>
-  </div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/index.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-        <li class="right" >
-          <a href="api/wildfire.KalmanGain.html" title="KalmanGain"
-             >next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">ads-wildfire 2023 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Welcome to ads-wildfire’s documentation!</a></li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, Team Creek.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>

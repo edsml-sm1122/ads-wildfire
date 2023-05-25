@@ -1,9 +1,6 @@
-import sys
 import os
-
-# We're working in the ./docs directory, but need the package root in the path
-# This command appends the directory one level up, in a cross-platform way.
-sys.path.insert(0, os.path.abspath(os.sep.join((os.curdir, '../'))))
+import sys
+sys.path.insert(0, os.path.abspath('..'))
 
 # Configuration file for the Sphinx documentation builder.
 #
@@ -21,16 +18,7 @@ release = '2023'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-# extensions = ['sphinx.ext.autodoc',
-#               'sphinx.ext.napoleon',
-#               'sphinx_automodapi.automodapi',
-#               'sphinx.ext.graphviz']
-extensions = ['sphinx_automodapi.automodapi', 'sphinx.ext.graphviz']
-numpydoc_show_class_members = False
-source_suffix = '.rst'
-master_doc = 'index'
-exclude_patterns = ['_build']
-autoclass_content = "both"
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.coverage', 'sphinx.ext.napoleon']  # noqa
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -39,5 +27,13 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'bizstyle'
+# html_theme = 'classic'
+# html_static_path = ['_static']
+
+html_theme = 'sphinx_rtd_theme'
+html_theme_options = {
+    'collapse_navigation': False,
+    'display_version': False,
+    'navigation_depth': 6, }
 html_static_path = ['_static']
+html_css_files = ['custom.css']

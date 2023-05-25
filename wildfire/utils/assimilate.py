@@ -6,11 +6,15 @@ def covariance_matrix(X):
     """
     Calculates the covariance matrix of the input data.
 
-    Args:
-        X (numpy.ndarray): Input data matrix with shape (n, m).
+    Parameters
+    ----------
+    X: numpy.ndarray
+        Input data matrix with shape (n, m).
 
-    Returns:
-        numpy.ndarray: Covariance matrix of shape (n, n).
+    Returns
+    -------
+    numpy.ndarray
+        Covariance matrix of shape (n, n).
     """
     means = np.array([np.mean(X, axis=1)]).transpose()
     dev_matrix = X - means
@@ -22,14 +26,21 @@ def update_prediction(x, K, H, y):
     """
     Updates the prediction using the Kalman filter equations.
 
-    Args:
-        x (numpy.ndarray): Current state estimate with shape (n, 1).
-        K (numpy.ndarray): Kalman Gain matrix with shape (n, p).
-        H (numpy.ndarray): Measurement matrix with shape (p, n).
-        y (numpy.ndarray): Measurement vector with shape (p, 1).
+    Parameters
+    ----------
+    x: numpy.ndarray
+        Current state estimate with shape (n, 1).
+    K: numpy.ndarray
+        Kalman Gain matrix with shape (n, p).
+    H: numpy.ndarray
+        Measurement matrix with shape (p, n).
+    y: numpy.ndarray
+        Measurement vector with shape (p, 1).
 
-    Returns:
-        numpy.ndarray: Updated state estimate with shape (n, 1).
+    Returns
+    -------
+    numpy.ndarray
+        Updated state estimate with shape (n, 1).
     """
     res = x + np.dot(K, (y - np.dot(H, x)))
     return res
@@ -39,15 +50,19 @@ def KalmanGain(B, H, R):
     """
     Calculates the Kalman gain matrix.
 
-    Args:
-        B (numpy.ndarray): Background error covariance matrix with
-                           shape (n, n).
-        H (numpy.ndarray): Measurement matrix with shape (p, n).
-        R (numpy.ndarray): Measurement error covariance matrix
-                           with shape (p, p).
+    Parameters
+    ----------
+    B: numpy.ndarray
+        Background error covariance matrix with shape (n, n).
+    H: numpy.ndarray
+        Measurement matrix with shape (p, n).
+    R: numpy.ndarray
+        Measurement error covariance matrix with shape (p, p).
 
-    Returns:
-        numpy.ndarray: Kalman gain matrix with shape (n, p).
+    Returns
+    -------
+    numpy.ndarray 
+        Kalman gain matrix with shape (n, p).
     """
     tempInv = inv(R + np.dot(H, np.dot(B, H.transpose())))
     res = np.dot(B, np.dot(H.transpose(), tempInv))
@@ -58,14 +73,17 @@ def run_assimilation(preds_compr, obs_data_compr):
     """
     Runs the assimilation process.
 
-    Args:
-        preds_compr (numpy.ndarray): Matrix of predicted values
-                                     with shape (m, n).
-        obs_data_compr (numpy.ndarray): Matrix of observed values
-                                        with shape (m, p).
+    Parameters
+    ----------
+    preds_compr: numpy.ndarray
+        Matrix of predicted values with shape (m, n).
+    obs_data_compr: numpy.ndarray
+        Matrix of observed values with shape (m, p).
 
-    Returns:
-        list: List of updated state estimates, each with shape (n, 1).
+    Returns
+    -------
+    list
+        List of updated state estimates, each with shape (n, 1).
     """
     R = np.cov(obs_data_compr.T)
     H = np.identity(obs_data_compr.shape[1])
