@@ -61,7 +61,7 @@ def KalmanGain(B, H, R):
 
     Returns
     -------
-    numpy.ndarray 
+    numpy.ndarray
         Kalman gain matrix with shape (n, p).
     """
     tempInv = inv(R + np.dot(H, np.dot(B, H.transpose())))

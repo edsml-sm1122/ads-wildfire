@@ -49,14 +49,14 @@ class VAE_Encoder_Conv(nn.Module):
         Parameters
         ----------
         x: float
-            the image
+            the input image.
 
         Returns
         -------
         mu: float
-            mean of the learned latent space representation
+            mean of the learned latent space representation.
         sigma: float
-            stdev of the learned latent space representation
+            stdev of the learned latent space representation.
         """
         x = self.layer1(x)
         x = self.layer2(x)
@@ -108,12 +108,12 @@ class VAE_Decoder_Conv(nn.Module):
         Parameters
         ----------
         x: float
-            the latent space representation
+            the latent space representation.
 
         Returns
         -------
         x: float
-            the reconstructed image
+            the reconstructed image.
         """
         x = self.layer1(x)
         x = self.layer2(x)
@@ -158,9 +158,9 @@ class VAE_Conv(nn.Module):
         Returns
         -------
         z: float
-            the sampled latent vector
+            the sampled latent vector.
         kl_div: float
-            the KL divergence term for regularization
+            the KL divergence term for regularization.
         """
         epsilon = 1e-8
         sigma = torch.clamp(sigma, epsilon)  # Ensure sigma > 0
@@ -175,14 +175,14 @@ class VAE_Conv(nn.Module):
         Parameters
         ----------
         x: float
-            a batch of images from the data-loader
+            a batch of images from the data-loader.
 
         Returns
         -------
         z: float
-            the reconstructed image
+            the reconstructed image.
         kl_div: float
-            the KL divergence term for regularization
+            the KL divergence term for regularization.
         """
         mu, sigma = self.encoder(x)
         z, kl_div = self.sample_latent_space(mu, sigma)
