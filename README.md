@@ -18,7 +18,7 @@ INTRODUCTION
 
 This repository contains PyTorch models, and example code for running them, to forecast wildfire growth. The models were trained on satellite imagery from the 2018 Ferguson wildfire.
 
-The documentation of the package, with a detailed explanation of all classes and functions, can be accessed [here](docs/html/index.html). In there, you can also find a short description explaining the forecasting models and algorithms used.
+The documentation of the package, with a detailed explanation of all classes and functions, can be accessed [here](docs/html/index.html).
 
 INSTALLATION
 ------------

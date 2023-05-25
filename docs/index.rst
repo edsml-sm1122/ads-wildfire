@@ -19,14 +19,18 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-.. automodule:: wildfire
-  :members:
-  :imported-members:
+.. automodapi:: wildfire
+   :no-inheritance-diagram:
+   :no-inherited-members:
 
-.. automodule:: wildfire.utils
-  :members:
-  :imported-members:
+.. .. automodule:: wildfire
+..   :members:
+..   :imported-members:
 
-  .. automodule:: wildfire.models
-  :members:
-  :imported-members:
+.. .. automodule:: wildfire.utils
+..   :members:
+..   :imported-members:
+
+..   .. automodule:: wildfire.models
+..   :members:
+..   :imported-members:

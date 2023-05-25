@@ -21,8 +21,12 @@ release = '2023'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.napoleon']
+# extensions = ['sphinx.ext.autodoc',
+#               'sphinx.ext.napoleon',
+#               'sphinx_automodapi.automodapi',
+#               'sphinx.ext.graphviz']
+extensions = ['sphinx_automodapi.automodapi', 'sphinx.ext.graphviz']
+numpydoc_show_class_members = False
 source_suffix = '.rst'
 master_doc = 'index'
 exclude_patterns = ['_build']
@@ -35,5 +39,5 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'haiku'
+html_theme = 'bizstyle'
 html_static_path = ['_static']
