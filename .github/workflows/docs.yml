@@ -1,0 +1,43 @@
+name: build sphinx documentation
+
+on:
+   push:
+     branches:
+       - main
+
+jobs:
+  sphinx:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -e .
+        pip install -r requirements.txt
+
+    - name: Build sphinx documentation
+      run: |
+        sphinx-build -b html docs docs/html
+
+    - name: Check if there are any changes in docs/html
+      id: verify_diff
+      run: |
+        git diff --quiet docs/html || echo "changed=true" >> $GITHUB_OUTPUT
+
+    - name: Run step if any file(s) in the docs/html folder change
+      if: steps.verify_diff.outputs.changed == 'true'
+      run: |
+        git config --global user.email "jm4622@ic.ac.uk"
+        git config --global user.name "edsml-jm4622"
+        git add docs/html
+        git commit -m "Update docs"
+        git push
