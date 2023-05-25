@@ -199,12 +199,12 @@
 <dd><p>Forward pass of the Convolutional VAE.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – a batch of images from the data-loader</p>
+<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – a batch of images from the data-loader.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>z</strong> (<em>float</em>) – the reconstructed image</p></li>
-<li><p><strong>kl_div</strong> (<em>float</em>) – the KL divergence term for regularization</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – the reconstructed image.</p></li>
+<li><p><strong>kl_div</strong> (<em>float</em>) – the KL divergence term for regularization.</p></li>
 </ul>
 </p>
 </dd>
@@ -224,8 +224,8 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>z</strong> (<em>float</em>) – the sampled latent vector</p></li>
-<li><p><strong>kl_div</strong> (<em>float</em>) – the KL divergence term for regularization</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – the sampled latent vector.</p></li>
+<li><p><strong>kl_div</strong> (<em>float</em>) – the KL divergence term for regularization.</p></li>
 </ul>
 </p>
 </dd>
@@ -244,10 +244,10 @@
 <dd><p>Forward pass of the decoder.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – the latent space representation</p>
+<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – the latent space representation.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>x</strong> – the reconstructed image</p>
+<dd class="field-even"><p><strong>x</strong> – the reconstructed image.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -267,12 +267,12 @@
 <dd><p>Forward pass of the encoder.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – the image</p>
+<dd class="field-odd"><p><strong>x</strong> (<em>float</em>) – the input image.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>mu</strong> (<em>float</em>) – mean of the learned latent space representation</p></li>
-<li><p><strong>sigma</strong> (<em>float</em>) – stdev of the learned latent space representation</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – mean of the learned latent space representation.</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – stdev of the learned latent space representation.</p></li>
 </ul>
 </p>
 </dd>
