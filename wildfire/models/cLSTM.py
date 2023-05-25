@@ -70,7 +70,7 @@ class ConvLSTMCell(nn.Module):
             image_size (tuple): Size of the input image (height, width).
 
         Returns:
-            tuple: Tuple containing the initialized hidden state 
+            tuple: Tuple containing the initialized hidden state
                    and cell state.
         """
         height, width = image_size
