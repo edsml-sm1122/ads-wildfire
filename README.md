@@ -32,9 +32,9 @@ pip install -e .
 User Instructions
 ------------
 
-The saved weights for our trained models have been included under `wildfire/models/weights`. These weights are loaded in the respective notebooks.
+Please place downloaded data under `wildfire/models/data`.
 
-If wanting to retrain the models from scratch, please delete/remove the saved weights from the above directory. Note: in this case, the `objective_1` and `objective_2` notebooks must be run before the `objective_3` notebook as this requiresthe saved weights.
+The saved weights for our trained models have been included under `wildfire/models/weights`. These weights are loaded in the respective notebooks. If wanting to retrain the models from scratch, please delete/remove the saved weights from the above directory. In this case, the `objective_1` and `objective_2` notebooks must be run before the `objective_3` notebook as this requires the saved weights. Warning: our models take quite a long to train from scratch, so training on Google Colab is recommended. 
  
 Contributers
 ------------
