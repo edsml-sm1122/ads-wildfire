@@ -18,6 +18,15 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
 .. automodule:: wildfire
+  :members:
+  :imported-members:
+
+.. automodule:: wildfire.utils
+  :members:
+  :imported-members:
+
+  .. automodule:: wildfire.models
   :members:
   :imported-members:
