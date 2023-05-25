@@ -15,18 +15,97 @@ def sample_data():
     return arr
 
 
-def test_split(sample_data):
-    arr = sample_data[:6]
+def test_split_odd(sample_data):
+    arr = sample_data[:7]
     chunk_size = 2
-    expected_result = np.array([1, 2, 3, 4, 5])
-    assert np.concatenate(split(arr, chunk_size), axis=0).all() ==  expected_result.all() # noqa
+    arr_split = split(arr, chunk_size)
+    print(arr)
+    assert len(arr_split) == 4
+    assert np.array(arr_split[0]).all() == np.array([1, 2]).all()
+    assert np.array(arr_split[1]).all() == np.array([3, 4]).all()
+    assert np.array(arr_split[2]).all() == np.array([5, 6]).all()
+    assert np.array(arr_split[3]).all() == np.array([5, 6]).all()
 
 
-def test_create_pairs(sample_data):
+def test_split_even(sample_data):
+    arr = sample_data[:6]
+    chunk_size = 3
+    arr_split = split(arr, chunk_size)
+    assert len(arr_split) == 2
+    assert np.array(arr_split[0]).all() == np.array([1, 2, 3]).all()
+    assert np.array(arr_split[1]).all() == np.array([4, 5, 6]).all()
+
+
+def test_split_empty():
+    arr = np.array([])
+    chunk_size = 2
+    with pytest.raises(ZeroDivisionError):
+        split(arr, chunk_size)
+
+
+def test_split_zero(sample_data):
+    arr = sample_data[:7]
+    chunk_size = 0
+    with pytest.raises(ZeroDivisionError):
+        split(arr, chunk_size)
+
+
+def test_create_pairs_even(sample_data):
     arr = sample_data
     chunk_size = 2
-    expected_result = np.array([1, 3, 5, 7, 9, 2, 4, 6, 8, 10])
-    assert np.concatenate(create_pairs(arr, chunk_size)).all() == expected_result.all()  # noqa
+    arr_pairs = create_pairs(arr, chunk_size)
+    assert len(arr_pairs) == 2
+    assert np.array(arr_pairs[0]).all() == np.array([1, 3, 5, 7, 9]).all()
+    assert np.array(arr_pairs[1]).all() == np.array([2, 4, 6, 8, 10]).all()
+
+
+def test_create_pairs_odd(sample_data):
+    arr = sample_data[:7]
+    chunk_size = 2
+    with pytest.raises(ValueError):
+        create_pairs(arr, chunk_size)
+
+
+def test_create_pairs_empty():
+    arr = np.array([])
+    chunk_size = 2
+    with pytest.raises(ZeroDivisionError):
+        create_pairs(arr, chunk_size)
+
+
+def test_create_pairs_zero(sample_data):
+    arr = sample_data
+    chunk_size = 0
+    with pytest.raises(ZeroDivisionError):
+        create_pairs(arr, chunk_size)
+
+
+def test_create_dataloader_train():
+    path = '../wildfire/data/Ferguson_fire_train.npy'
+    batch_size = 32
+    dataloader = create_dataloader(path, batch_size)
+    batch = next(iter(dataloader))
+    assert len(batch) == 2
+    assert batch[0].shape == (32, 256, 256)
+    assert batch[1].shape == (32, 256, 256)
+
+
+def test_create_dataloader_val():
+    path = '../wildfire/data/Ferguson_fire_test.npy'
+    batch_size = 32
+    dataloader = create_dataloader(path, batch_size, mode='val')
+    batch = next(iter(dataloader))
+    assert len(batch) == 2
+    assert batch[0].shape == (32, 256, 256)
+    assert batch[1].shape == (32, 256, 256)
+    assert batch[0][1].numpy().all() == batch[1][0].numpy().all()
+
+
+def test_create_dataloader_err():
+    path = '../wildfire/data/Ferguson_fire_background.npy'
+    batch_size = 32
+    with pytest.raises(ZeroDivisionError):
+        create_dataloader(path, batch_size)
 
 
 if __name__ == '__main__':
