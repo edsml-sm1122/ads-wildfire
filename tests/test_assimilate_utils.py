@@ -29,13 +29,11 @@ def test_covariance_matrix(sample_data):
 def test_update_prediction(sample_data):
     x, K, H, y = sample_data[1:5]
     expected_result = np.array([[-4,  -8, -12], [-10, -23, -36.], [-16, -38, -60]])  # noqa
-    print(update_prediction(x, K, H, y))
     assert np.allclose(update_prediction(x, K, H, y), expected_result)
 
 
 def test_KalmanGain(sample_data):
     B, H, R = sample_data[3:6]
-    print(KalmanGain(B, H, R))
     expected_result = np.array([[-6, -2, 3], [-1, 0.5, 0], [5, 1, -2]])
     assert np.allclose(KalmanGain(B, H, R), expected_result)
 
