@@ -1,4 +1,4 @@
-from wildfire.models.cVAE import * 
-from wildfire.models.cLSTM import *
-from wildfire.utils.train import *
-from wildfire.utils.assimilate import *
+from wildfire.models.cVAE import *  # noqa
+from wildfire.models.cLSTM import *  # noqa
+from wildfire.utils.train import *  # noqa
+from wildfire.utils.assimilate import *  # noqa
