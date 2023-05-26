@@ -54,6 +54,8 @@ If you have any usage questions or improvement recommendations, feel free to con
 References
 ------------
 * Shi, X. et al. (2015) Convolutional LSTM network: A machine learning approach for precipitation nowcasting, arXiv.org. Available at: https://arxiv.org/abs/1506.04214 (Accessed: 24 May 2023). 
+* He, K. et al. (2015) Deep residual learning for image recognition, arXiv.org. Available at: https://arxiv.org/abs/1512.03385 (Accessed: 24 May 2023). 
+* Child, R. (2021) Very Deep Vaes generalize autoregressive models and can outperform them on images, arXiv.org. Available at: https://arxiv.org/abs/2011.10650 (Accessed: 24 May 2023). 
 
 LICENSING
 ------------
